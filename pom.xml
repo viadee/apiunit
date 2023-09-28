@@ -6,7 +6,32 @@
 
     <groupId>de.viadee</groupId>
     <artifactId>apiunit</artifactId>
+    <name>ApiUnit</name>
+    <description>ApiUnit is a free and simple library for checking REST API guidelines of your Java code.
+    </description>
     <version>0.1.0-SNAPSHOT</version>
+
+    <organization>
+        <name>viadee Unternehmensberatung AG</name>
+        <url>https://www.viadee.de</url>
+    </organization>
+
+    <url>https://github.com/viadee/apiunit</url>
+
+    <developers>
+        <developer>
+            <name>Steffen Lammers</name>
+            <email>steffen.lammers@viadee.de</email>
+            <organization>viadee Unternehmensberatung AG</organization>
+            <organizationUrl>http://www.viadee.de</organizationUrl>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git@github.com/viadee/apiunit.git</connection>
+        <developerConnection>scm:git:git@github.com/viadee/apiunit.git</developerConnection>
+        <url>git@github.com/viadee/apiunit.git</url>
+    </scm>
 
     <properties>
         <java.version>17</java.version>
@@ -18,6 +43,8 @@
         <maven-source.version>3.3.0</maven-source.version>
         <maven-gpg.version>3.1.0</maven-gpg.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <license-maven.version>4.2</license-maven.version>
+        <maven-javadoc.version>3.6.0</maven-javadoc.version>
     </properties>
 
     <dependencies>
@@ -120,6 +147,68 @@
                     <target>${java.version}</target>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>com.mycila</groupId>
+                <artifactId>license-maven-plugin</artifactId>
+                <version>${license-maven.version}</version>
+                <configuration>
+                    <header>src/main/resources/Apache 2.0 License.txt</header>
+                    <properties>
+                        <owner>viadee Unternehmensberatung AG</owner>
+                        <inceptionYear>2023</inceptionYear>
+                        <email>steffen.lammers@viadee.de</email>
+                    </properties>
+                    <mapping>
+                        <java>SLASHSTAR_STYLE</java>
+                    </mapping>
+                    <excludes>
+                        <exclude>**/README</exclude>
+                        <exclude>src/test/resources/**</exclude>
+                        <exclude>src/main/resources/**</exclude>
+                        <exclude>src/main/resources-filtered/**</exclude>
+                        <exclude>docs/**</exclude>
+                        <exclude>src/main/java/**/*.properties</exclude>
+                        <exclude>*.xml</exclude>
+                        <exclude>*.yml</exclude>
+                        <exclude>*.log</exclude>
+                        <exclude>*.pmd</exclude>
+                        <exclude>LICENSE.txt</exclude>
+                    </excludes>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>Check licenses</id>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>Insert or update license</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>format</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${maven-javadoc.version}</version>
+                <configuration>
+                    <detectJavaApiLink>false</detectJavaApiLink>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
@@ -133,4 +222,11 @@
             <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
         </repository>
     </distributionManagement>
+
+    <licenses>
+        <license>
+            <name>Apache-2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
 </project>
