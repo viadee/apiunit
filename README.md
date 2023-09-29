@@ -8,14 +8,13 @@ ApiUnit's focus is to automatically check compliance with guidelines in projects
 
 ### Add the Maven Central dependency to your project
 
-##### Maven ToDo:
+##### Maven
 
 ```
 <dependency>
-    <groupId>com.tngtech.archunit</groupId>
-    <artifactId>archunit</artifactId>
-    <version>1.1.0</version>
-    <scope>test</scope>
+    <groupId>de.viadee</groupId>
+    <artifactId>apiunit</artifactId>
+    <version>0.1.0</version>
 </dependency>
 ```
 
