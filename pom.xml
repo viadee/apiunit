@@ -9,7 +9,7 @@
     <name>ApiUnit</name>
     <description>ApiUnit is a free and simple library for checking REST API guidelines of your Java code.
     </description>
-    <version>0.1.0-SNAPSHOT</version>
+    <version>0.1.0</version>
 
     <organization>
         <name>viadee Unternehmensberatung AG</name>
